@@ -1,24 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import "./responsive.css";
+import HomeScreen from "./screens/HomeScreen";
+import SingleProduct from "./screens/SingleProduct";
+import Login from "./screens/Login";
+import Register from "./screens/Register";
+import ProfileScreen from "./screens/ProfileScreen";
+import CartScreen from "./screens/CartScreen";
+import ShippingScreen from "./screens/ShippingScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import NotFound from "./screens/NotFound";
+import PrivateRoute from "./components/PrivateRoute.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/products/:productId" element={<SingleProduct />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfileScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/cart/:productId?" element={<CartScreen />} />
+        <Route
+          path="/shipping"
+          element={
+            <PrivateRoute>
+              <ShippingScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <PrivateRoute>
+              <PaymentScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/placeOrder"
+          element={
+            <PrivateRoute>
+              <PlaceOrderScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order/:id"
+          element={
+            <PrivateRoute>
+              <OrderScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
