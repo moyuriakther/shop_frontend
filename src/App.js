@@ -20,6 +20,12 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
+        <Route path="/search/:search" element={<HomeScreen />} />
+        <Route path="/page/:pagenumber" element={<HomeScreen />} />
+        <Route
+          path="/search/:search/page/:pageNumber"
+          element={<HomeScreen />}
+        />
         <Route path="/products/:productId" element={<SingleProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

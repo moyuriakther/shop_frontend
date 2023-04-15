@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Redux/Actions/userActions";
@@ -7,6 +7,7 @@ import { logOut } from "../Redux/Actions/userActions";
 const Header = () => {
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
+  const history = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
@@ -14,6 +15,11 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if (search.trim()) {
+      history(`/search/${search}`);
+    } else {
+      history("/");
+    }
   };
 
   const handleLogout = () => {

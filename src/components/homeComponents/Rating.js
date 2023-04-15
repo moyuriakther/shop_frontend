@@ -1,55 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Rating = ({ value, text }) => {
-  // console.log(value, text);
+  console.log(value, "value", text, "text");
+  // <i class="fa-regular fa-star-sharp-half-stroke"></i>;
+  // <i class="fa-regular fa-star-half-stroke"></i>
+  // <i class="fa-sharp fa-regular fa-star"></i>
+  useEffect(() => {}, [value, text]);
   return (
     <div className="rating">
       <i
         className={
           value >= 1
-            ? "fas fa-start"
-            : value >= 0.5
-            ? "fas fa-start-half-alt"
-            : "far fa-start"
+            ? "fa-regular fa-start"
+            : // : value >= 0.5
+              // ? "fa-regular fa-star-half-stroke"
+              "fa-sharp fa-regular fa-star"
         }
       ></i>
       <i
         className={
           value >= 2
-            ? "fas fa-start"
-            : value >= 1.5
-            ? "fas fa-start-half-alt"
-            : "far fa-start"
+            ? "fa-regular fa-start"
+            : // : value >= 1.5
+              // ? "fa-regular fa-star-half-stroke"
+              "fa-sharp fa-regular fa-star"
         }
       ></i>
       <i
         className={
           value >= 3
-            ? "fas fa-start"
-            : value >= 2.5
-            ? "fas fa-start-half-alt"
-            : "far fa-start"
+            ? "fa-regular fa-start"
+            : // : value >= 2.5
+              // ? "fa-regular fa-star-half-stroke"
+              "fa-sharp fa-regular fa-star"
         }
       ></i>
       <i
         className={
           value >= 4
-            ? "fas fa-start"
-            : value >= 3.5
-            ? "fas fa-start-half-alt"
-            : "far fa-start"
+            ? "fa-regular fa-start"
+            : // : value >= 3.5
+              // ? "fa-regular fa-star-half-stroke"
+              "fa-sharp fa-regular fa-star"
         }
       ></i>
       <i
         className={
           value >= 5
-            ? "fas fa-start"
-            : value >= 4.5
-            ? "fas fa-start-half-alt"
-            : "far fa-start"
+            ? "fa-regular fa-start"
+            : // : value >= 4.5
+              // ? "fa-regular fa-star-half-stroke"
+              "fa-sharp fa-regular fa-star"
         }
       ></i>
-      <span>{text && text}</span>
+      <span> {text && text}</span>
     </div>
   );
 };

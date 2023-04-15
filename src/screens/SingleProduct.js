@@ -133,7 +133,7 @@ const SingleProduct = () => {
                     key={i}
                   >
                     <strong>{review?.name}</strong>
-                    <Rating value={review?.rating} />
+                    <Rating value={review?.rating} text={review?.numReviews} />
                     <span>{moment(review?.createdAt).calendar()}</span>
                     <div className="alert alert-info mt-3">
                       {review?.comment}

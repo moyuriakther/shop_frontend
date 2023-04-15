@@ -4,13 +4,15 @@ import CallToActionSection from "../components/homeComponents/CallToActionSectio
 import ContactInfo from "../components/homeComponents/ContactInfo";
 import ShopSection from "../components/homeComponents/ShopSection";
 import Footer from "../components/Footer";
+import { useParams } from "react-router";
 
 const HomeScreen = () => {
   window.scrollTo(0, 0);
+  const { search, pagenumber } = useParams();
   return (
     <div>
       <Header />
-      <ShopSection />
+      <ShopSection search={search} pagenumber={pagenumber} />
       <CallToActionSection />
       <ContactInfo />
       <Footer />

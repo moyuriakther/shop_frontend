@@ -7,14 +7,14 @@ import { productList } from "../../Redux/Actions/ProductActions";
 import Loading from "../loadingError/Loading";
 import Error from "../loadingError/Error";
 
-const ShopSection = () => {
+const ShopSection = ({ search, pagenumber }) => {
   const productsList = useSelector((state) => state.productList);
-  const { loading, error, products } = productsList;
+  const { loading, error, products, page, pages } = productsList;
   // console.log(products);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(productList());
-  }, [dispatch]);
+    dispatch(productList(search, pagenumber));
+  }, [dispatch, search, pagenumber]);
   return (
     <div className="container">
       <div className="section">
@@ -47,8 +47,8 @@ const ShopSection = () => {
                             </Link>
                           </p>
                           <Rating
-                            value={product?.Rating}
-                            text={`${product?.reviews} reviews`}
+                            value={product?.rating}
+                            text={`${product?.reviews.length} reviews`}
                           ></Rating>
                           <h3>${product?.price}</h3>
                         </div>
@@ -57,8 +57,11 @@ const ShopSection = () => {
                   ))}
                 </>
               )}
-
-              <Pagination />
+              <Pagination
+                page={page}
+                pages={pages}
+                search={search ? search : ""}
+              />
             </div>
           </div>
         </div>
