@@ -56,12 +56,7 @@ export const createProductReview =
       const {
         userLogin: { userInfo },
       } = getState();
-      const config = {
-        headers: {
-          "Content-Type": "application-json",
-          authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+
       await axios.post(`/api/products/${productId}/review`, {
         review,
         headers: {
